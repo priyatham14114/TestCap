@@ -1,0 +1,238 @@
+/* Enter your custom styles here */
+.Inputs {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border-width: 0px;
+}
+.Barcode{
+    width:40%;
+    height: 10%;
+}
+.close{
+    margin-left: 95%;
+}
+.receiptback{
+    background-image: url("../images/Truck.jpeg");
+
+}
+.TableContent:hover{
+    background-color: rgb(175, 66, 110);
+    color: white;
+    box-shadow: 10px 10px 5px rgb(203, 200, 200);
+    border-radius: 5px; 
+}
+
+.Header {
+    /* background-color: rgb(53, 72, 128); */
+    background-image: url("../images/Truck.jpeg");
+    /* border-radius: 10px; */
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.logo {
+    height: 80px;
+    width: 80;
+
+}
+.logoReceipt {
+    height: 50px;
+    width: 50;
+
+}
+.logoBarcode{
+  height: 50px;
+  width: 50;
+
+}
+.receiptlogovbox{
+  margin-left: 60%;
+}
+
+.Reservationsbtn {
+    margin-left: 77vw;
+
+}
+.parkingAnalysis {
+    margin-left:10px;
+}
+/* .barcodeScanner {
+    margin-left: 85vw;
+
+} */
+
+.Content {
+    /* background-color: rgb(58, 173, 129); */
+    /* background-color: rgb(53, 72, 128); */
+    background-image: url("");
+    background-position: center;
+    /* height: 100vh; */
+    background-size: cover;
+    background-repeat: repeat;
+
+
+}
+
+.buttonBlue {
+    background-color: rgb(53, 72, 128);
+    color: white;
+    border-radius: 9px;
+    border: 0px;
+
+}
+.buttonBlue:hover{
+    background-color: rgb(201, 47, 109);
+    cursor: pointer;
+}
+.buttonRed:hover{
+    background-color: rgb(53, 72, 128);
+    cursor: pointer;
+
+}
+
+.buttonRed {
+    background-color: rgb(201, 47, 109);
+    border-radius: 9px;
+    color: white;
+    border: 0px;
+
+
+}
+
+.InputForm {
+    /* background-color: rgb(53, 72, 128); */
+    background-color: rgba(94, 94, 94, 0.097);
+    /* background-image: url("../images/Truck3.jpg"); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 45h;
+    width: 45vw;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+}
+
+.textColor {
+    color: white;
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+
+    /* text-shadow: 1px 1px 2px black; */
+}
+
+/* .inputLables{
+    color: white;
+    text-shadow: 0px 1px 0px white
+} */
+
+.dialogSlideIn {
+    animation: slideIn 1s forwards;
+}
+
+/* not Used */
+.dialogSlideOut {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/* border animation */
+@keyframes borderAnimation {
+    50% {
+        border-width: 2px;
+        border-color: rgb(201, 47, 109);
+    }
+
+    50% {
+        border-width: 2px;
+        border-color: rgb(34, 31, 31);
+        box-shadow: inset;
+    }
+}
+
+.animatedBorder {
+    animation: borderAnimation 5s infinite;
+    /* 3s for the duration, infinite for continuous looping */
+    border-style: double;
+
+}
+
+/* .movingImage {
+    position: relative;
+    animation: mymove 10s infinite;
+    height: 80px;
+    width: 80;
+}
+@keyframes mymove {
+    from {right: 0px;}
+    to {right: 2000px;}
+  }
+  */
+
+.movingImage {
+    height:80px;
+    width: 80px;
+    margin-left: 80vw;
+    position: relative;
+
+}
+
+.movingImage.animate {
+    animation: mymove 15s;
+    /* animation: mymove infinite; */
+}
+
+@keyframes mymove {
+    from {
+        right: 0px;
+    }
+
+    to {
+        right: 2000px;
+    }
+}
+
+.movingImageOut {
+    position: relative;
+    height: 80px;
+    width: 80px;
+}
+
+.movingImageOut.animate {
+    animation: mymove2 15s ;
+}
+
+@keyframes mymove2 {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 2000px;
+    }
+}

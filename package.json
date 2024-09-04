@@ -1,0 +1,45 @@
+{
+  "name": "TestCap",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.20.0",
+    "@sap-cloud-sdk/resilience": "^3.20.0",
+    "@sap/cds": "^8",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "axios": "^1.7.7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "@sap/ux-specification": "^1.120.17",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-parkingappl": "cds watch --open parkingappl/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy TestCap --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-vendorapp": "cds watch --open vendorapp/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "parkingsrv": {
+        "kind": "odata-v2",
+        "model": "srv/external/parkingsrv",
+        "credentials": {
+          "[development]": {
+            "url": "http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZPARKING_APP_SRVC_S_SRV"
+          },
+          "[production]": {}
+        }
+      }
+    }
+  }
+}

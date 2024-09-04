@@ -1,0 +1,321 @@
+{
+ "meta": {
+  "creator": "cds-dk 8.1.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "parkingsrv": {
+   "kind": "service",
+   "@cds.external": true,
+   "@sap.supported.formats": "atom json xlsx",
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "parkingsrv.ZPARKING_SLOTS_SSet": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.updatable": "false",
+   "@sap.creatable": "false",
+   "@sap.pageable": "false",
+   "@sap.deletable": "false",
+   "elements": {
+    "Slotnumbers": {
+     "key": true,
+     "type": "cds.String",
+     "length": 5,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "slot number",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Status": {
+     "type": "cds.String",
+     "length": 15,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "status",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Assigneddrivername": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "ASSIGNEDDRIVERNAME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Deliverytype": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "deliverytype",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Assigneddrivermobile": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "ASSIGNEDDRIVERMOBILE",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Assigneddeliverytype": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "ASSIGNEDDELIVERYTYPE",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Assignedcheckintime": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "ASSIGNEDCHECKINTIME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "VendorName": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "VENDOR_NAME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Assignedvehiclenumber": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "ASSIGNEDVEHICLENUMBER",
+     "@sap.unicode": "false",
+     "notNull": true
+    }
+   }
+  },
+  "parkingsrv.ZPARKING_RESERVE_SSet": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.updatable": "false",
+   "@sap.creatable": "false",
+   "@sap.pageable": "false",
+   "@sap.deletable": "false",
+   "elements": {
+    "Uuid": {
+     "key": true,
+     "type": "cds.String",
+     "length": 36,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "UNIQUE ID",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Vehiclenumber": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "VEHICLENUMBER",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Drivermobile": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "DRIVERMOBILE",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Vendorname": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "VENDORNAME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Reservedslot": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "RESERVEDSLOT",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Drivername": {
+     "type": "cds.LargeString",
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "Drivername",
+     "@sap.unicode": "false",
+     "@sap.quickinfo": "DRIVERNAME",
+     "notNull": true
+    },
+    "Reserveddate": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "RESERVEDDATE",
+     "@sap.unicode": "false",
+     "notNull": true
+    }
+   }
+  },
+  "parkingsrv.ZPARKING_HISTORYSet": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.content.version": "1",
+   "@sap.updatable": "false",
+   "@sap.creatable": "false",
+   "@sap.pageable": "false",
+   "@sap.deletable": "false",
+   "elements": {
+    "Uuid": {
+     "key": true,
+     "type": "cds.String",
+     "length": 36,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "UUID",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Vehiclenumber": {
+     "type": "cds.String",
+     "length": 15,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "VEHICLENUMBER",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Drivername": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "DRIVERNAME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Drivermobile": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "DRIVERMOBILE",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Deliverytype": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "DELIVERYTYPE",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Checkintime": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "CHECKINTIME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Checkouttime": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "CHECKOUTTIME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "VendorName": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "VENDOR_NAME",
+     "@sap.unicode": "false",
+     "notNull": true
+    },
+    "Historyslotnumber": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.filterable": "false",
+     "@sap.sortable": "false",
+     "@sap.updatable": "false",
+     "@sap.creatable": "false",
+     "@sap.label": "HISTORYSLOTNUMBER",
+     "@sap.unicode": "false",
+     "notNull": true
+    }
+   }
+  }
+ }
+}

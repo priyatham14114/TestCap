@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edmx:Edmx xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xml:lang="en" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" sap:schema-version="1" Namespace="ZPARKING_APP_SRVC_S_SRV">
+            <Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" String="1.0.0" Term="Core.SchemaVersion" />
+
+            <EntityType sap:content-version="1" Name="ZPARKING_SLOTS_S">
+                <Key>
+                    <PropertyRef Name="Slotnumbers" />
+                </Key>
+
+                <Property Name="Slotnumbers" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="slot number" sap:unicode="false" MaxLength="5" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Status" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="status" sap:unicode="false" MaxLength="15" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Assigneddrivername" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="ASSIGNEDDRIVERNAME" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Deliverytype" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="deliverytype" sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Assigneddrivermobile" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="ASSIGNEDDRIVERMOBILE" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Assigneddeliverytype" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="ASSIGNEDDELIVERYTYPE" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Assignedcheckintime" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="ASSIGNEDCHECKINTIME" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="VendorName" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="VENDOR_NAME" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Assignedvehiclenumber" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="ASSIGNEDVEHICLENUMBER" sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String" />
+            </EntityType>
+
+            <EntityType sap:content-version="1" Name="ZPARKING_RESERVE_S">
+                <Key>
+                    <PropertyRef Name="Uuid" />
+                </Key>
+
+                <Property Name="Vehiclenumber" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="VEHICLENUMBER" sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Uuid" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="UNIQUE ID" sap:unicode="false" MaxLength="36" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Drivermobile" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="DRIVERMOBILE" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Vendorname" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="VENDORNAME" sap:unicode="false" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Reservedslot" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="RESERVEDSLOT" sap:unicode="false" MaxLength="5" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Drivername" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Drivername" sap:unicode="false" Nullable="false" Type="Edm.String" sap:quickinfo="DRIVERNAME" />
+
+                <Property Name="Reserveddate" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="RESERVEDDATE" sap:unicode="false" MaxLength="12" Nullable="false" Type="Edm.String" />
+            </EntityType>
+
+            <EntityType sap:content-version="1" Name="ZPARKING_HISTORY">
+                <Key>
+                    <PropertyRef Name="Uuid" />
+                </Key>
+
+                <Property Name="Uuid" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="UUID" sap:unicode="false" MaxLength="36" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Vehiclenumber" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="VEHICLENUMBER" sap:unicode="false" MaxLength="15" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Drivername" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="DRIVERNAME" sap:unicode="false" MaxLength="20" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Drivermobile" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="DRIVERMOBILE" sap:unicode="false" MaxLength="12" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Deliverytype" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="DELIVERYTYPE" sap:unicode="false" MaxLength="20" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Checkintime" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="CHECKINTIME" sap:unicode="false" MaxLength="40" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Checkouttime" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="CHECKOUTTIME" sap:unicode="false" MaxLength="40" Nullable="false" Type="Edm.String" />
+
+                <Property Name="VendorName" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="VENDOR_NAME" sap:unicode="false" MaxLength="20" Nullable="false" Type="Edm.String" />
+
+                <Property Name="Historyslotnumber" sap:filterable="false" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="HISTORYSLOTNUMBER" sap:unicode="false" MaxLength="6" Nullable="false" Type="Edm.String" />
+            </EntityType>
+
+            <EntityContainer Name="ZPARKING_APP_SRVC_S_SRV_Entities" sap:supported-formats="atom json xlsx" m:IsDefaultEntityContainer="true">
+                <EntitySet sap:content-version="1" Name="ZPARKING_SLOTS_SSet" sap:updatable="false" sap:creatable="false" sap:pageable="false" sap:deletable="false" EntityType="ZPARKING_APP_SRVC_S_SRV.ZPARKING_SLOTS_S" />
+
+                <EntitySet sap:content-version="1" Name="ZPARKING_RESERVE_SSet" sap:updatable="false" sap:creatable="false" sap:pageable="false" sap:deletable="false" EntityType="ZPARKING_APP_SRVC_S_SRV.ZPARKING_RESERVE_S" />
+
+                <EntitySet sap:content-version="1" Name="ZPARKING_HISTORYSet" sap:updatable="false" sap:creatable="false" sap:pageable="false" sap:deletable="false" EntityType="ZPARKING_APP_SRVC_S_SRV.ZPARKING_HISTORY" />
+            </EntityContainer>
+
+            <atom:link rel="self" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZPARKING_APP_SRVC_S_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+            <atom:link rel="latest-version" href="http://vhcalakeci.artihcus.com:50600/sap/opu/odata/sap/ZPARKING_APP_SRVC_S_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom" />
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
