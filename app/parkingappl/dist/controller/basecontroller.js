@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/core/Fragment"],function(e,t){"use strict";return e.extend("com.app.parkingappl.controller.basecontroller",{loadFragment:async function(e){const n=await t.load({id:this.getView().getId(),name:`com.app.parkingappl.fragments.${e}`,controller:this});this.getView().addDependent(n);return n}})});
+//# sourceMappingURL=basecontroller.js.map

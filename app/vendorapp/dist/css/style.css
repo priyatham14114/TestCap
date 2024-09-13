@@ -1,0 +1,53 @@
+/* Enter your custom styles here */
+.dialogSlideIn {
+    animation: slideIn 1s forwards;
+}
+
+.dialogSlideOut {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/* .WarehouseImage{
+    height: 100vh;
+    width: 100vw;
+} */
+
+.VendorPage {
+    background-image: url("../images/WareHouse.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.popElements{
+    opacity: 1 !important; 
+}
+.logo {
+    height: 80px;
+    width: 80;
+
+}

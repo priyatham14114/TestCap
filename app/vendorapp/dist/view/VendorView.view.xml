@@ -1,0 +1,50 @@
+<mvc:View
+    xmlns:commons="sap.suite.ui.commons"
+    id="mainView"
+    controllerName="com.app.vendorapp.controller.VendorView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    displayBlock="true"
+>
+    <Page
+        id="idPage"
+        showHeader="false"
+        class="VendorPage"
+    >
+        <ScrollContainer
+            id="scrollContainer"
+            vertical="true"
+            height="100%"
+        >
+            <tnt:ToolHeader
+                id="toolHeader"
+                class="sapUiTinyMargin"
+                height="15vh"
+            >
+            <VBox id="idVBoxjksbdnf__">
+                <Image
+                    class="logo"
+                    id="idVMMLogo"
+                    height="10vh"
+                    src="./images/Vishal-MegaMart.png"
+                />
+                <Title
+                    id="productName"
+                    text="Parking Management"
+                    wrapping="true"
+                    textAlign="Right"
+                    
+                />
+                </VBox>
+                <ToolbarSpacer id="toolbarSpacer" />
+                <Button
+                    id="logiidBopokSlotButton"
+                    text="Book Slot"
+                    press="onBookPress"
+                />
+            </tnt:ToolHeader>
+        </ScrollContainer>
+    </Page>
+</mvc:View>

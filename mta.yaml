@@ -3,88 +3,138 @@ ID: TestCap
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: TestCap-srv
-  type: nodejs
-  path: gen/srv
-  provides:
-  - name: srv-api
-    properties:
-      srv-url: ${default-url}
-  parameters:
-    buildpack: nodejs_buildpack
-    readiness-health-check-http-endpoint: /health
-    readiness-health-check-type: http
-  build-parameters:
-    builder: npm
-- name: TestCap-app-content
-  type: com.sap.application.content
-  path: .
-  requires:
-  - name: TestCap-repo-host
+  - name: TestCap-srv
+    type: nodejs
+    path: gen/srv
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
     parameters:
-      content-target: true
-  build-parameters:
-    build-result: resources
+      buildpack: nodejs_buildpack
+      readiness-health-check-http-endpoint: /health
+      readiness-health-check-type: http
+    build-parameters:
+      builder: npm
     requires:
-    - artifacts:
-      - comappparkingappl.zip
-      name: comappparkingappl
-      target-path: resources/
-    - artifacts:
-      - comappvendorapp.zip
-      name: comappvendorapp
-      target-path: resources/
-- name: comappparkingappl
-  type: html5
-  path: app/parkingappl
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: comappvendorapp
-  type: html5
-  path: app/vendorapp
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-resources:
-- name: TestCap-repo-host
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
-    service-name: TestCap-html5-srv
-    service-plan: app-host
-- name: TestCap-destination-service
-  type: org.cloudfoundry.managed-service
-  parameters:
-    config:
-      HTML5Runtime_enabled: false
-      init_data:
+      - name: uaa_TestCap
+      - name: TestCap-destination-service
+      - name: TestCap-db
+  - name: TestCap-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: TestCap-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - comappparkingappl.zip
+          name: comappparkingappl
+          target-path: resources/
+        - artifacts:
+            - comappvendorapp.zip
+          name: comappvendorapp
+          target-path: resources/
+  - name: comappparkingappl
+    type: html5
+    path: app/parkingappl
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms:
+        []
+  - name: comappvendorapp
+    type: html5
+    path: app/vendorapp
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms:
+        []
+  - name: TestCap-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: TestCap-destination-service
+        parameters:
+          content-target: true
+      - name: TestCap-repo-host
+        parameters:
+          service-key:
+            name: TestCap-repo-host-key
+      - name: uaa_TestCap
+        parameters:
+          service-key:
+            name: uaa_TestCap-key
+    parameters:
+      content:
         instance:
           destinations:
-          - Authentication: NoAuthentication
-            Name: ui5
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://ui5.sap.com
-          existing_destinations_policy: update
-      version: 1.0.0
-    service: destination
-    service-name: TestCap-destination-service
-    service-plan: lite
+            - Name: testcap_TestCap_repo_host
+              ServiceInstanceName: TestCap-html5-srv
+              ServiceKeyName: TestCap-repo-host-key
+              sap.cloud.service: testcap
+            - Authentication: OAuth2UserTokenExchange
+              Name: testcap_uaa_TestCap
+              ServiceInstanceName: TestCap-xsuaa-service
+              ServiceKeyName: uaa_TestCap-key
+              sap.cloud.service: testcap
+          existing_destinations_policy: ignore
+    build-parameters:
+      no-source: true
+
+  - name: TestCap-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: TestCap-db
+resources:
+  - name: TestCap-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: TestCap-html5-srv
+      service-plan: app-host
+  - name: TestCap-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        version: 1.0.0
+      service: destination
+      service-name: TestCap-destination-service
+      service-plan: lite
+  - name: uaa_TestCap
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: TestCap-xsuaa-service
+      service-plan: application
+      config:
+        xsappname: TestCap-${org}-${space}
+        tenant-mode: dedicated
+  - name: TestCap-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-  - builder: custom
-    commands:
-    - npm ci
-    - npx cds build --production
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
